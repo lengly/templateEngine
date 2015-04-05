@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Template Engine</title>
+</head>
+<body>
+
+<div id="test1"></div>
+<div id="test2"></div>
+
+<script type="text/javascript" src="templateEngine.js"></script>
+<script type="text/javascript">
+
+var template1 = '<p>Hello, my name is <%this.name%>. I\'m <%this.profile.age%> years old.</p>';
+var data1 = {
+    name: "Lengly",
+    profile: { age: 20 }
+}
+
+document.getElementById("test1").innerHTML = TemplateEngine(template1, data1);
+
+
+
+var template2 = 
+'My skills: ' + 
+'<%if(this.showSkills) {%>' +
+    '<%for(var index in this.skills) {%>' + 
+    '<a href="#"><%this.skills[index]%></a> ' +
+    '<%}%>' +
+'<%} else {%>' +
+    '<p>none</p>' +
+'<%}%>';
+
+var data2 = {
+	skills: ["js", "html", "css"],
+	showSkills: true
+}
+
+document.getElementById("test2").innerHTML = TemplateEngine(template2, data2);
+
+</script>
+
+</body>
